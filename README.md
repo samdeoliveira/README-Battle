@@ -9,14 +9,8 @@ Aqui, seus repositórios, stars, forks, são seus golpes. Seus seguidores são s
 ![Tech](https://img.shields.io/badge/Tech-HTML5%20%2F%20CSS3%20%2F%20JS-yellow?style=for-the-badge)
 <br>
 [https://readme-battle.vercel.app](https://readme-battle.vercel.app)  <br>
-<table>
-  <tr>
-    <td>
-      <video src="https://github.com/user-attachments/assets/40d42572-65df-4868-8a01-23e8bc98b8e8" width="240" height="240" autoplay loop muted playsinline>
-      </video>
-    </td>
-  </tr>
-</table>
+<img src="https://github.com/user-attachments/assets/28091264-0316-4ed5-b6f2-4ac5f6c8c00e" width="440" height="440" />
+
 
 ---
 
