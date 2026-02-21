@@ -8,7 +8,9 @@ Aqui, seus repositórios, stars, forks, são seus golpes. Seus seguidores são s
 ![Status do Projeto](https://img.shields.io/badge/Status-Pronto%20para%20o%20Fatality-red?style=for-the-badge)
 ![Tech](https://img.shields.io/badge/Tech-HTML5%20%2F%20CSS3%20%2F%20JS-yellow?style=for-the-badge)
 <br>
-<img src="https://i.ibb.co/Zz2pbbFq/2026-02-21-05-00-01-online-video-cutter-com.gif" width="440" height="440">
+[https://readme-battle.vercel.app](https://readme-battle.vercel.app)  <br>
+<img src="https://i.ibb.co/Zz2pbbFq/2026-02-21-05-00-01-online-video-cutter-com.gif" width="440" height="440"> <br>
+
 ---
 
 ## 🕹️ Como funciona a pancadaria?
