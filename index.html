@@ -1,282 +1,94 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>README Battle</title>
-    <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicons/favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        :root { --p1: #00ff41; --p2: #ff4141; --bg: #0d1117; --shield: #3498db; }
-        body {
-            background: var(--bg); color: #fff; font-family: 'Press Start 2P', cursive;
-            display: flex; flex-direction: column; align-items: center; margin: 0; padding: 10px; overflow-x: hidden;
-        }
-        h1 { font-size: 1.2rem; color: #f1c40f; text-shadow: 3px 3px #000; text-align: center; margin: 20px 0; }
-
-        .setup { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
-        input { 
-            padding: 12px; background: #161b22; border: 4px solid #30363d; 
-            color: #58a6ff; font-family: 'Press Start 2P'; font-size: 10px; width: 180px;
-        }
-        button { 
-            padding: 12px 24px; background: #238636; border: 4px solid #2ea043; 
-            color: #fff; font-family: 'Press Start 2P'; cursor: pointer; transition: 0.2s;
-        }
-        button:hover { background: #2ea043; transform: scale(1.05); }
-
-        .arena {
-            width: 100%; max-width: 900px; display: flex; justify-content: space-between;
-            background: #161b22; border: 8px solid #30363d; padding: 20px; box-sizing: border-box;
-            position: relative; overflow: hidden; min-height: 320px;
-        }
-        .fighter { width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; position: relative; transition: 0.5s; }
-        .avatar { 
-            width: 110px; height: 110px; border: 4px solid #fff; background-size: cover;
-            image-rendering: pixelated; margin-bottom: 10px; z-index: 2; position: relative;
-        }
-
-        .bars-container { width: 100%; margin-bottom: 5px; }
-        .shield-box { width: 100%; height: 12px; border: 2px solid #fff; background: #222; margin-bottom: 2px; position: relative; overflow: hidden; }
-        .shield-bar { height: 100%; background: var(--shield); width: 100%; transition: width 0.3s; }
-        .shield-text { position: absolute; width: 100%; text-align: center; font-size: 7px; top: 2px; color: #fff; z-index: 3; text-shadow: 1px 1px #000; }
-
-        .hp-box { width: 100%; height: 25px; border: 3px solid #fff; background: #333; position: relative; overflow: hidden; }
-        .hp-bar { height: 100%; width: 100%; transition: width 0.3s; }
-        #hp1-bar { background: var(--p1); } #hp2-bar { background: var(--p2); }
-        .hp-text { position: absolute; width: 100%; text-align: center; font-size: 8px; top: 6px; text-shadow: 1px 1px #000; z-index: 3; }
-
-        #combat-log {
-            width: 100%; max-width: 884px; height: 220px; background: #000;
-            border: 4px solid #30363d; margin-top: 15px; padding: 15px;
-            overflow-y: auto; font-size: 10px; color: #00ff00; line-height: 1.6; box-sizing: border-box;
-        }
-        .log-entry { margin-bottom: 8px; border-left: 3px solid #444; padding-left: 8px; }
-        .dmg { color: #ff4141; }
-        .combo-text { color: #ff00ff; animation: blink 0.1s infinite; }
-
+<!DOCTYPE html><html lang="pt-br"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>README Battle</title>    <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicons/favicon.svg">    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">    <style>        :root { --p1: #00ff41; --p2: #ff4141; --bg: #0d1117; --shield: #3498db; }        body {            background: var(--bg); color: #fff; font-family: 'Press Start 2P', cursive;            display: flex; flex-direction: column; align-items: center; margin: 0; padding: 10px; overflow-x: hidden;        }        h1 { font-size: 1.2rem; color: #f1c40f; text-shadow: 3px 3px #000; text-align: center; margin: 20px 0; }
+        .setup { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }        input {             padding: 12px; background: #161b22; border: 4px solid #30363d;             color: #58a6ff; font-family: 'Press Start 2P'; font-size: 10px; width: 180px;        }        button {             padding: 12px 24px; background: #238636; border: 4px solid #2ea043;             color: #fff; font-family: 'Press Start 2P'; cursor: pointer; transition: 0.2s;        }        button:hover { background: #2ea043; transform: scale(1.05); }
+        .arena {            width: 100%; max-width: 900px; display: flex; justify-content: space-between;            background: #161b22; border: 8px solid #30363d; padding: 20px; box-sizing: border-box;            position: relative; overflow: hidden; min-height: 320px;        }        .fighter { width: 45%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; position: relative; transition: 0.5s; }        .avatar {             width: 110px; height: 110px; border: 4px solid #fff; background-size: cover;            image-rendering: pixelated; margin-bottom: 10px; z-index: 2; position: relative;        }
+        .bars-container { width: 100%; margin-bottom: 5px; }        .shield-box { width: 100%; height: 12px; border: 2px solid #fff; background: #222; margin-bottom: 2px; position: relative; overflow: hidden; }        .shield-bar { height: 100%; background: var(--shield); width: 100%; transition: width 0.3s; }        .shield-text { position: absolute; width: 100%; text-align: center; font-size: 7px; top: 2px; color: #fff; z-index: 3; text-shadow: 1px 1px #000; }
+        .hp-box { width: 100%; height: 25px; border: 3px solid #fff; background: #333; position: relative; overflow: hidden; }        .hp-bar { height: 100%; width: 100%; transition: width 0.3s; }        #hp1-bar { background: var(--p1); } #hp2-bar { background: var(--p2); }        .hp-text { position: absolute; width: 100%; text-align: center; font-size: 8px; top: 6px; text-shadow: 1px 1px #000; z-index: 3; }
+        #combat-log {            width: 100%; max-width: 884px; height: 220px; background: #000;            border: 4px solid #30363d; margin-top: 15px; padding: 15px;            overflow-y: auto; font-size: 10px; color: #00ff00; line-height: 1.6; box-sizing: border-box;        }        .log-entry { margin-bottom: 8px; border-left: 3px solid #444; padding-left: 8px; }        .dmg { color: #ff4141; }        .combo-text { color: #ff00ff; animation: blink 0.1s infinite; }
         .blood { position: absolute; width: 5px; height: 5px; background: red; pointer-events: none; z-index: 10; }
+        #fatality-screen {            position: fixed; top: 0; left: 0; width: 100%; height: 100%;            background: rgba(0,0,0,0.95); display: none; flex-direction: column;            align-items: center; justify-content: center; z-index: 100;        }        #fatality-text { color: #ff0000; font-size: 40px; text-shadow: 4px 4px #000; margin-bottom: 20px; animation: pulse 0.5s infinite; }                .hit { animation: shake 0.2s ease-in-out; }        .heavy-hit { animation: shake-hard 0.4s ease-in-out; }        .die { transform: rotate(90deg) translateY(30px); opacity: 0.5; filter: grayscale(1); }
 
-        #fatality-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); display: none; flex-direction: column;
-            align-items: center; justify-content: center; z-index: 100;
+        /* ESTILOS DOS LOGS */
+        #log-modal {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 90%; max-width: 700px; height: 85%; background: #0d1117; 
+            border: 6px solid #238636; z-index: 200; display: none; flex-direction: column;
+            padding: 20px; box-shadow: 0 0 50px rgba(0,0,0,1);
         }
-        #fatality-text { color: #ff0000; font-size: 40px; text-shadow: 4px 4px #000; margin-bottom: 20px; animation: pulse 0.5s infinite; }
-        
-        .hit { animation: shake 0.2s ease-in-out; }
-        .heavy-hit { animation: shake-hard 0.4s ease-in-out; }
-        .die { transform: rotate(90deg) translateY(30px); opacity: 0.5; filter: grayscale(1); }
+        .log-header { color: #238636; font-size: 14px; margin-bottom: 20px; border-bottom: 2px solid #238636; padding-bottom: 10px; text-align: center; }
+        .comparison-table { width: 100%; font-size: 8px; border-collapse: collapse; margin-bottom: 20px; background: #161b22; }
+        .comparison-table td, .comparison-table th { border: 1px solid #30363d; padding: 10px; text-align: center; }
+        .analysis-text { font-size: 10px; color: #8b949e; line-height: 1.6; margin-bottom: 20px; border-left: 4px solid #f1c40f; padding-left: 10px; }
+        .full-history { flex-grow: 1; overflow-y: auto; background: #000; padding: 10px; border: 2px solid #30363d; font-size: 9px; color: #00ff00; }
+        .btn-exit { color: #555; font-size: 14px; cursor: pointer; margin-top: 15px; font-family: 'Press Start 2P'; }
+        .btn-exit:hover { color: #888; }
 
-        @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-5px);} 75% {transform: translateX(5px);} }
-        @keyframes shake-hard { 0%, 100% {transform: translate(0,0);} 10% {transform: translate(-10px, 5px);} 50% {transform: translate(10px, -5px);} }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-
-        @media (max-width: 600px) {
-            .arena { flex-direction: column; min-height: 500px; gap: 20px; }
-            .fighter { width: 100%; }
-            input { width: 120px; }
-        }
-    </style>
-</head>
-<body>
-
-    <h1>⚔️ README BATTLE ⚔️</h1>
-    
-    <div class="setup" id="setup-area">
-        <input type="text" id="u1" placeholder="Seu usuário">
-        <input type="text" id="u2" placeholder="Oponente">
-        <button onclick="initFight()">LUTAR!</button>
-    </div>
-
-    <div class="arena" id="main-arena">
-        <div class="fighter" id="f1">
-            <div class="bars-container">
-                <div class="shield-box"><div id="sh1-bar" class="shield-bar"></div><div class="shield-text" id="sh1-val">🛡️ 0</div></div>
-                <div class="hp-box"><div id="hp1-bar" class="hp-bar"></div><div class="hp-text" id="hp1-val">100/100</div></div>
-            </div>
-            <div id="av1" class="avatar"></div>
-            <span id="n1">PLAYER 1</span>
-        </div>
-
-        <div class="fighter" id="f2">
-            <div class="bars-container">
-                <div class="shield-box"><div id="sh2-bar" class="shield-bar"></div><div class="shield-text" id="sh2-val">🛡️ 0</div></div>
-                <div class="hp-box"><div id="hp2-bar" class="hp-bar"></div><div class="hp-text" id="hp2-val">100/100</div></div>
-            </div>
-            <div id="av2" class="avatar"></div>
-            <span id="n2">PLAYER 2</span>
-        </div>
-    </div>
-
+        @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-5px);} 75% {transform: translateX(5px);} }        @keyframes shake-hard { 0%, 100% {transform: translate(0,0);} 10% {transform: translate(-10px, 5px);} 50% {transform: translate(10px, -5px);} }        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } }        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        @media (max-width: 600px) {            .arena { flex-direction: column; min-height: 500px; gap: 20px; }            .fighter { width: 100%; }            input { width: 120px; }        }    </style></head><body>
+    <h1>⚔️ README BATTLE ⚔️</h1>        <div class="setup" id="setup-area">        <input type="text" id="u1" placeholder="Seu usuário">        <input type="text" id="u2" placeholder="Oponente">        <button onclick="initFight()">LUTAR!</button>    </div>
+    <div class="arena" id="main-arena">        <div class="fighter" id="f1">            <div class="bars-container">                <div class="shield-box"><div id="sh1-bar" class="shield-bar"></div><div class="shield-text" id="sh1-val">🛡️ 0</div></div>                <div class="hp-box"><div id="hp1-bar" class="hp-bar"></div><div class="hp-text" id="hp1-val">100/100</div></div>            </div>            <div id="av1" class="avatar"></div>            <span id="n1">PLAYER 1</span>        </div>
+        <div class="fighter" id="f2">            <div class="bars-container">                <div class="shield-box"><div id="sh2-bar" class="shield-bar"></div><div class="shield-text" id="sh2-val">🛡️ 0</div></div>                <div class="hp-box"><div id="hp2-bar" class="hp-bar"></div><div class="hp-text" id="hp2-val">100/100</div></div>            </div>            <div id="av2" class="avatar"></div>            <span id="n2">PLAYER 2</span>        </div>    </div>
     <div id="combat-log">> Aguardando desafiantes para análise de repositórios...</div>
+    <div id="fatality-screen">        <h1 id="fatality-text">FATALITY</h1>        <button onclick="playSfx(100,'square'); setTimeout(()=>location.reload(),100)" style="background:#800000; border:4px solid red; color:white; padding:15px; font-family:'Press Start 2P'; cursor:pointer; margin-bottom: 15px; width: 280px;">NOVA LUTA</button>        <button onclick="playSfx(300,'square'); showAnalysis()" style="background:#238636; border:4px solid #2ea043; color:white; padding:15px; font-family:'Press Start 2P'; cursor:pointer; width: 280px;">VER LOGS</button>        <span class="btn-exit" onclick="playSfx(50,'square'); document.getElementById('fatality-screen').style.display='none'">x</span>    </div>
 
-    <div id="fatality-screen">
-        <h1 id="fatality-text">FATALITY</h1>
-        <button onclick="location.reload()" style="background:#800000; border:4px solid red; color:white; padding:15px; font-family:'Press Start 2P'; cursor:pointer;">NOVA LUTA</button>
-    </div>
+    <div id="log-modal">
+        <div class="log-header">POST-MORTEM REPORT</div>
+        <div id="analysis-content"></div>
+        <div class="full-history" id="modal-history"></div>
+        <button onclick="playSfx(100,'square'); document.getElementById('log-modal').style.display='none'" style="margin-top:20px; background:#444; font-size:10px; border:none; padding:10px; color:white; cursor:pointer; font-family:'Press Start 2P';">FECHAR</button>    </div>
 
-    <script>
-        const audio = new (window.AudioContext || window.webkitAudioContext)();
-        
-        function playSfx(baseFreq, type, duration = 0.1) {
-            try {
-                const o = audio.createOscillator(); const g = audio.createGain();
-                o.type = type; o.frequency.setValueAtTime(baseFreq, audio.currentTime);
-                o.frequency.exponentialRampToValueAtTime(10, audio.currentTime + duration);
-                g.gain.setValueAtTime(0.1, audio.currentTime); g.gain.linearRampToValueAtTime(0, audio.currentTime + duration);
-                o.connect(g); g.connect(audio.destination); o.start(); o.stop(audio.currentTime + duration);
-            } catch(e) {}
+    <script>        const audio = new (window.AudioContext || window.webkitAudioContext)();
+        let fightStats = { p1: null, p2: null, winner: null };
+
+        function playSfx(baseFreq, type, duration = 0.1) {            try {                const o = audio.createOscillator(); const g = audio.createGain();                o.type = type; o.frequency.setValueAtTime(baseFreq, audio.currentTime);                o.frequency.exponentialRampToValueAtTime(10, audio.currentTime + duration);                g.gain.setValueAtTime(0.1, audio.currentTime); g.gain.linearRampToValueAtTime(0, audio.currentTime + duration);                o.connect(g); g.connect(audio.destination); o.start(); o.stop(audio.currentTime + duration);            } catch(e) {}        }
+        function spawnBlood(fighterId) {            const fighter = document.getElementById(fighterId);            const avatar = fighter.querySelector('.avatar');            const rect = avatar.getBoundingClientRect();            for(let i=0; i<15; i++) {                const b = document.createElement('div'); b.className = 'blood';                b.style.left = (rect.left + rect.width/2) + 'px'; b.style.top = (rect.top + rect.height/2) + 'px';                document.body.appendChild(b);                const vx = (Math.random() - 0.5) * 25; const vy = (Math.random() - 0.5) * 25;                let opacity = 1, x = rect.left + rect.width/2, y = rect.top + rect.height/2;                const anim = setInterval(() => {                    x += vx; y += vy; opacity -= 0.04; b.style.left = x + 'px'; b.style.top = y + 'px'; b.style.opacity = opacity;                    if(opacity <= 0) { clearInterval(anim); b.remove(); }                }, 30);            }        }
+        async function smartFetch(user) {            try {                const res = await fetch(`https://api.github.com/users/${user}`);                if (res.status === 404) throw new Error("not-found");                const u = await res.json();                const rRes = await fetch(`https://api.github.com/users/${user}/repos?per_page=60&sort=updated`);                let r = await rRes.json();                if(Array.isArray(r)) r = r.sort(() => Math.random() - 0.5);                return { u, r };            } catch (e) {                if (e.message === "not-found") throw e;                const u = { login: user, avatar_url: `https://github.com/${user}.png`, public_repos: 10, followers: 5 };                const r = [{ name: 'Legacy-Project', stargazers_count: 5, forks_count: 2 }];                return { u, r };            }        }
+        async function getStats(user) {            try {                const data = await smartFetch(user);                const { u, r } = data;                let stars = 0;                if(Array.isArray(r)) r.forEach(repo => { stars += repo.stargazers_count; });                return {                    name: u.login, avatar: u.avatar_url,                    hp: 100 + u.public_repos + stars,                    shield: u.followers, maxShield: u.followers,                    stars: stars, repos_count: u.public_repos,                    repos: Array.isArray(r) ? r : [], usedRepos: 0                };            } catch (e) {                return { error: `Usuário "${user}" não encontrado!` };            }        }
+
+        function showAnalysis() {
+            const modal = document.getElementById('log-modal');
+            const content = document.getElementById('analysis-content');
+            const history = document.getElementById('modal-history');
+            const p1 = fightStats.p1; const p2 = fightStats.p2; const w = fightStats.winner;
+            const l = (w.name === p1.name) ? p2 : p1;
+            let reason = "";
+            if (w.maxShield > l.maxShield * 1.5) reason = `A legião de ${w.maxShield} seguidores criou uma barreira intransponível.`;
+            else if (w.stars > l.stars) reason = `A popularidade (${w.stars} stars) traduziu-se em dano bruto superior.`;
+            else reason = `A consistência de repositórios e a sorte nos críticos garantiram a vitória.`;
+
+            content.innerHTML = `
+                <table class="comparison-table">
+                    <tr><th>DATA</th><th>${p1.name}</th><th>${p2.name}</th></tr>
+                    <tr><td>❤️ HP</td><td>${p1.hp}</td><td>${p2.hp}</td></tr>
+                    <tr><td>🛡️ SHIELD</td><td>${p1.maxShield}</td><td>${p2.maxShield}</td></tr>
+                    <tr><td>⭐ STARS</td><td>${p1.stars}</td><td>${p2.stars}</td></tr>
+                </table>
+                <div class="analysis-text"><b>RESULTADO:</b> ${reason}</div>
+            `;
+            
+            // FILTRO RIGOROSO: Pega apenas as divs de log real, ignorando textos soltos
+            const logEntries = document.querySelectorAll('#combat-log .log-entry');
+            let cleanHTML = "";
+            logEntries.forEach(entry => { cleanHTML += entry.outerHTML; });
+            history.innerHTML = cleanHTML;
+            
+            modal.style.display = 'flex';
         }
 
-        function spawnBlood(fighterId) {
-            const fighter = document.getElementById(fighterId);
-            const avatar = fighter.querySelector('.avatar');
-            const rect = avatar.getBoundingClientRect();
-            for(let i=0; i<15; i++) {
-                const b = document.createElement('div'); b.className = 'blood';
-                b.style.left = (rect.left + rect.width/2) + 'px'; b.style.top = (rect.top + rect.height/2) + 'px';
-                document.body.appendChild(b);
-                const vx = (Math.random() - 0.5) * 25; const vy = (Math.random() - 0.5) * 25;
-                let opacity = 1, x = rect.left + rect.width/2, y = rect.top + rect.height/2;
-                const anim = setInterval(() => {
-                    x += vx; y += vy; opacity -= 0.04; b.style.left = x + 'px'; b.style.top = y + 'px'; b.style.opacity = opacity;
-                    if(opacity <= 0) { clearInterval(anim); b.remove(); }
-                }, 30);
-            }
-        }
-
-        async function smartFetch(user) {
-            try {
-                const res = await fetch(`https://api.github.com/users/${user}`);
-                if (res.status === 404) throw new Error("not-found");
-                const u = await res.json();
-                const rRes = await fetch(`https://api.github.com/users/${user}/repos?per_page=60&sort=updated`);
-                let r = await rRes.json();
-                if(Array.isArray(r)) r = r.sort(() => Math.random() - 0.5);
-                return { u, r };
-            } catch (e) {
-                if (e.message === "not-found") throw e;
-                const u = { login: user, avatar_url: `https://github.com/${user}.png`, public_repos: 10, followers: 5 };
-                const r = [{ name: 'Legacy-Project', stargazers_count: 5, forks_count: 2 }];
-                return { u, r };
-            }
-        }
-
-        async function getStats(user) {
-            try {
-                const data = await smartFetch(user);
-                const { u, r } = data;
-                let stars = 0;
-                if(Array.isArray(r)) r.forEach(repo => { stars += repo.stargazers_count; });
-                return {
-                    name: u.login, avatar: u.avatar_url,
-                    hp: 100 + u.public_repos + stars,
-                    shield: u.followers, maxShield: u.followers,
-                    repos: Array.isArray(r) ? r : [], usedRepos: 0
-                };
-            } catch (e) {
-                return { error: `Usuário "${user}" não encontrado!` };
-            }
-        }
-
-        let fightInterval;
-        let turnCount = { p1: 0, p2: 0 };
-        let enrageMultiplier = 1; // Controla a duplicação do dano BASH
-
-        async function initFight() {
-            if(audio.state === 'suspended') audio.resume();
-            const log = document.getElementById('combat-log');
-            const u1Name = document.getElementById('u1').value.trim();
-            const u2Name = document.getElementById('u2').value.trim();
-            if(!u1Name || !u2Name) return;
-
-            log.innerHTML = "> Analisando perfis...";
-            const p1 = await getStats(u1Name);
-            const p2 = await getStats(u2Name);
-
+        let fightInterval;        let turnCount = { p1: 0, p2: 0 };        let enrageMultiplier = 1;
+        async function initFight() {            if(audio.state === 'suspended') audio.resume();            const log = document.getElementById('combat-log');            const u1Name = document.getElementById('u1').value.trim();            const u2Name = document.getElementById('u2').value.trim();            if(!u1Name || !u2Name) return;
+            log.innerHTML = "> Analisando perfis...";            const p1 = await getStats(u1Name);            const p2 = await getStats(u2Name);
             if (p1.error || p2.error) { log.innerHTML = p1.error || p2.error; return; }
+            fightStats.p1 = p1; fightStats.p2 = p2;
 
-            document.getElementById('av1').style.backgroundImage = `url(${p1.avatar})`;
-            document.getElementById('av2').style.backgroundImage = `url(${p2.avatar})`;
-            document.getElementById('n1').innerText = p1.name;
-            document.getElementById('n2').innerText = p2.name;
-
-            let h1 = p1.hp, h2 = p2.hp, s1 = p1.shield, s2 = p2.shield;
-            let turn = 0;
-            turnCount = { p1: 0, p2: 0 };
-            enrageMultiplier = 1;
-
+            document.getElementById('av1').style.backgroundImage = `url(${p1.avatar})`;            document.getElementById('av2').style.backgroundImage = `url(${p2.avatar})`;            document.getElementById('n1').innerText = p1.name;            document.getElementById('n2').innerText = p2.name;
+            let h1 = p1.hp, h2 = p2.hp, s1 = p1.shield, s2 = p2.shield;            let turn = 0; turnCount = { p1: 0, p2: 0 }; enrageMultiplier = 1;
             if (fightInterval) clearInterval(fightInterval);
-
-            fightInterval = setInterval(() => {
-                const isP1 = turn % 2 === 0;
-                const atk = isP1 ? p1 : p2;
-                const atkKey = isP1 ? 'p1' : 'p2';
-                const targetId = isP1 ? 'f2' : 'f1';
-                
-                let dmg = 0, move = "", isFrenzy = false;
-
-                if (atk.repos[atk.usedRepos]) {
-                    const repo = atk.repos[atk.usedRepos];
-                    dmg = 20 + repo.stargazers_count + repo.forks_count;
-                    move = repo.name.toUpperCase();
-                    atk.usedRepos++;
-                } else {
-                    // MUDANÇA AQUI: Dano base 90 que dobra a cada turno de BASH
-                    dmg = 90 * enrageMultiplier;
-                    move = "BRUTE FORCE BASH";
-                    enrageMultiplier *= 2; 
-                }
-
-                turnCount[atkKey]++;
-                if (turnCount[atkKey] > 5 && atk.repos[atk.usedRepos - 1]) { 
-                    dmg *= 3; isFrenzy = true; 
-                }
-
-                let finalDmg = Math.floor(dmg);
-                if (isP1) {
-                    if (s2 > 0) { let abs = Math.min(s2, finalDmg); s2 -= abs; finalDmg -= abs; }
-                    h2 -= finalDmg;
-                } else {
-                    if (s1 > 0) { let abs = Math.min(s1, finalDmg); s1 -= abs; finalDmg -= abs; }
-                    h1 -= finalDmg;
-                }
-
-                playSfx(isP1 ? 200 : 150, isFrenzy || !atk.repos[atk.usedRepos-1] ? 'sawtooth' : 'square');
-                document.getElementById(targetId).classList.add(isFrenzy ? 'heavy-hit' : 'hit');
-                if (dmg > 50) spawnBlood(targetId);
-
+            fightInterval = setInterval(() => {                const isP1 = turn % 2 === 0;                const atk = isP1 ? p1 : p2;                const atkKey = isP1 ? 'p1' : 'p2';                const targetId = isP1 ? 'f2' : 'f1';                                let dmg = 0, move = "", isFrenzy = false;
+                if (atk.repos[atk.usedRepos]) {                    const repo = atk.repos[atk.usedRepos];                    dmg = 20 + repo.stargazers_count + repo.forks_count;                    move = repo.name.toUpperCase();                    atk.usedRepos++;                } else {                    dmg = 90 * enrageMultiplier;                    move = "BRUTE FORCE BASH";                    enrageMultiplier *= 2;                 }
+                turnCount[atkKey]++;                if (turnCount[atkKey] > 5 && atk.repos[atk.usedRepos - 1]) { dmg *= 3; isFrenzy = true; }
+                let finalDmg = Math.floor(dmg);                if (isP1) {                    if (s2 > 0) { let abs = Math.min(s2, finalDmg); s2 -= abs; finalDmg -= abs; }                    h2 -= finalDmg;                } else {                    if (s1 > 0) { let abs = Math.min(s1, finalDmg); s1 -= abs; finalDmg -= abs; }                    h1 -= finalDmg;                }
+                playSfx(isP1 ? 200 : 150, isFrenzy || !atk.repos[atk.usedRepos-1] ? 'sawtooth' : 'square');                document.getElementById(targetId).classList.add(isFrenzy ? 'heavy-hit' : 'hit');                if (dmg > 50) spawnBlood(targetId);
                 setTimeout(() => document.querySelectorAll('.fighter').forEach(f => f.classList.remove('hit', 'heavy-hit')), 200);
-
-                log.innerHTML += `<div class="log-entry"><b>${atk.name}</b>: <span class="${isFrenzy?'combo-text':''}">${move}</span> <span class="dmg">-${Math.floor(dmg)}</span></div>`;
-                updateUI(h1, p1.hp, h2, p2.hp, s1, p1.maxShield, s2, p2.maxShield);
-                log.scrollTop = log.scrollHeight;
-
-                if (h1 <= 0 || h2 <= 0) {
-                    clearInterval(fightInterval);
-                    const loserId = h1 <= 0 ? 'f1' : 'f2';
-                    document.getElementById(loserId).classList.add('die');
-                    setTimeout(() => {
-                        document.getElementById('fatality-screen').style.display = 'flex';
-                        playSfx(60, 'sawtooth', 0.8);
-                    }, 600);
-                }
-                turn++;
-            }, 800);
-        }
-
-        function updateUI(h1, m1, h2, m2, s1, ms1, s2, ms2) {
-            document.getElementById('hp1-bar').style.width = Math.max(0, (h1/m1)*100) + "%";
-            document.getElementById('hp2-bar').style.width = Math.max(0, (h2/m2)*100) + "%";
-            document.getElementById('hp1-val').innerText = `${Math.max(0, Math.floor(h1))} HP`;
-            document.getElementById('hp2-val').innerText = `${Math.max(0, Math.floor(h2))} HP`;
-            document.getElementById('sh1-bar').style.width = ms1 > 0 ? (s1/ms1*100) + "%" : "0%";
-            document.getElementById('sh2-bar').style.width = ms2 > 0 ? (s2/ms2*100) + "%" : "0%";
-            document.getElementById('sh1-val').innerText = `🛡️ ${Math.max(0, Math.floor(s1))}`;
-            document.getElementById('sh2-val').innerText = `🛡️ ${Math.max(0, Math.floor(s2))}`;
-        }
-    </script>
-</body>
-</html>
+                log.innerHTML += `<div class="log-entry"><b>${atk.name}</b>: <span class="${isFrenzy?'combo-text':''}">${move}</span> <span class="dmg">-${Math.floor(dmg)}</span></div>`;                updateUI(h1, p1.hp, h2, p2.hp, s1, p1.maxShield, s2, p2.maxShield);                log.scrollTop = log.scrollHeight;
+                if (h1 <= 0 || h2 <= 0) {                    clearInterval(fightInterval);                    fightStats.winner = h1 <= 0 ? p2 : p1;                    const loserId = h1 <= 0 ? 'f1' : 'f2';                    document.getElementById(loserId).classList.add('die');                    setTimeout(() => {                        document.getElementById('fatality-screen').style.display = 'flex';                        playSfx(60, 'sawtooth', 0.8);                    }, 600);                }                turn++;            }, 800);        }
+        function updateUI(h1, m1, h2, m2, s1, ms1, s2, ms2) {            document.getElementById('hp1-bar').style.width = Math.max(0, (h1/m1)*100) + "%";            document.getElementById('hp2-bar').style.width = Math.max(0, (h2/m2)*100) + "%";            document.getElementById('hp1-val').innerText = `${Math.max(0, Math.floor(h1))} HP`;            document.getElementById('hp2-val').innerText = `${Math.max(0, Math.floor(h2))} HP`;            document.getElementById('sh1-bar').style.width = ms1 > 0 ? (s1/ms1*100) + "%" : "0%";            document.getElementById('sh2-bar').style.width = ms2 > 0 ? (s2/ms2*100) + "%" : "0%";            document.getElementById('sh1-val').innerText = `🛡️ ${Math.max(0, Math.floor(s1))}`;            document.getElementById('sh2-val').innerText = `🛡️ ${Math.max(0, Math.floor(s2))}`;        }    </script></body></html>
