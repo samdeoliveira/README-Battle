@@ -53,7 +53,7 @@ Para provar que o GitHub pode ser muito mais do que um lugar para guardar códig
 
 ## ⚖️ Licença
 
-Distribuído sob a licença **"Se perder, não chore"**. Sinta-se à vontade para forkear, adicionar novos golpes e melhorar o sistema de partículas!
+Distribuído sob a licença **MIT**. Sinta-se à vontade para forkear, adicionar novos golpes e melhorar o sistema de partículas!
 
 ---
 
